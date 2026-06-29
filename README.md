@@ -1,4 +1,4 @@
-# Nest - Student Housing ERP Platform
+# Nest - Modern Student Housing Management Platform for Brokers, Property Owners and Students.
 
 Nest is a production-oriented SaaS foundation for student housing management.
 
