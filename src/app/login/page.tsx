@@ -2,14 +2,11 @@
 
 import { FormEvent, useMemo, useState } from "react";
 import { signIn } from "next-auth/react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
   const router = useRouter();
-  const searchParams = useSearchParams();
-
-  const callbackUrl = useMemo(() => searchParams.get("callbackUrl") ?? "/", [searchParams]);
-
+  
   const [email, setEmail] = useState("student@nest.app");
   const [password, setPassword] = useState("student123");
   const [error, setError] = useState<string | null>(null);
@@ -23,7 +20,7 @@ export default function LoginPage() {
     const result = await signIn("credentials", {
       email,
       password,
-      callbackUrl,
+      callbackUrl: "/",
       redirect: false
     });
 
@@ -34,7 +31,7 @@ export default function LoginPage() {
       return;
     }
 
-    router.push(result.url ?? callbackUrl);
+    router.push(result.url ?? "/");
     router.refresh();
   }
 
