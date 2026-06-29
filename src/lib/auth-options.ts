@@ -3,6 +3,7 @@ import type { NextAuthOptions } from "next-auth";
 import { demoAuthUsers } from "@/lib/auth-users";
 
 export const authOptions: NextAuthOptions = {
+  secret: process.env.AUTH_SECRET,
   session: {
     strategy: "jwt"
   },
